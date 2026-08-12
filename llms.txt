@@ -61,7 +61,7 @@ Three cross-cutting threads: time (company lifecycle), people (iceberg model), i
 The interactive company diagnosis dashboard is live (no install needed):
 https://focus688.github.io/company-operating-system/diagnostic-dashboard.html
 
-English translations of all 19 chapters are in docs/en/ (in progress).
+English translations of all 19 chapters are in docs/en/ (complete as of 2026-08-12).
 
 ## AI-Native Organization (AI 原生组织)
 
