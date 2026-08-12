@@ -71,7 +71,7 @@ Not ERP software. Not a collection of management slogans. A reusable framework y
 | [Operately Deployment Review](docs/17-Operately实操评测.md) | Hands-on Operately deployment review with screenshots, setup notes, and trade-offs |
 | [AI-Native Organization](docs/18-AI时代-原生组织实践.md) | AI-native organization: practices across all 8 layers, three operating models, a four-step adoption path, and AI governance |
 | [Matrix Coupling](docs/19-矩阵耦合-模块间咬合关系.md) | 7 matrices showing how the layers interact |
-| [Diagnosis Dashboard](diagnostic-dashboard.html) | Interactive eight-dimension assessment tool |
+| [Diagnosis Dashboard](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) | Interactive eight-dimension assessment tool — **try it live**: [open](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) |
 
 ---
 

@@ -126,7 +126,7 @@
 |:---|:---|
 | [12-落地清单-先做哪几件事](docs/12-落地清单-先做哪几件事.md) | 6步落地 + 每月经营诊断模板 |
 | [15-经营诊断模板-月度与年度](docs/15-经营诊断模板-月度与年度.md) | 📋 可下载的月度10分钟体检 + 年度战略会 + 160分评分卡 |
-| [🎛️ 企业经营诊断大屏](diagnostic-dashboard.html) | 🖥️ 可交互八维诊断工具（雷达图+打分+建议），下载后浏览器打开，[查看截图](assets/diagnostic-dashboard.png) |
+| [🎛️ 企业经营诊断大屏](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) | 🖥️ 可交互八维诊断工具（雷达图+打分+建议），**在线直接体验**：[打开](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) |
 
 ### 📖 案例、评测与扩展
 
