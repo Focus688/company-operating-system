@@ -51,6 +51,9 @@ Three cross-cutting threads: time (company lifecycle), people (iceberg model), i
 - docs/16-推广发布指南.md: Promotion guide
 - docs/17-Operately实操评测.md: Operately deployment review (tested)
 - docs/18-AI时代-原生组织实践.md: AI-Native Organization — AI practice map for all 8 layers, 3 organizational forms (AI-enhanced / AI-collaborative / AI-native), 4-step adoption path, AI governance
+- docs/19-矩阵耦合-模块间咬合关系.md: Matrix coupling — 7 matrices (8-layer × 3 threads coupling, RACI main matrix, resource support, moat × industry, risk heatmap, lifecycle adaptation, decision authority)
+- diagnostic-dashboard.html: Interactive 8-dimension company diagnostic dashboard (radar chart + scoring + recommendations, zero-dependency single HTML file)
+- assets/matrix_*.png: Matrix heatmaps (coupling / risk × industry / moat × industry)
 - assets/panorama-v2.png: Framework diagram
 
 ## AI-Native Organization (AI 原生组织)

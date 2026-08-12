@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企业经营诊断大屏 · Company OS Diagnostic Dashboard</title>
+<style>
+:root {
+  --bg: #0f172a; --card: #1e293b; --border: #334155; --text: #e2e8f0;
+  --muted: #94a3b8; --accent: #38bdf8; --green: #4ade80; --yellow: #facc15; --red: #f87171;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif; min-height:100vh; }
+.header { padding:20px 32px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+.header h1 { font-size:22px; background:linear-gradient(90deg,var(--accent),#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.header .sub { color:var(--muted); font-size:13px; margin-top:4px; }
+.container { max-width:1400px; margin:0 auto; padding:20px; display:grid; grid-template-columns: 280px 1fr; gap:20px; }
+@media(max-width:900px){ .container{grid-template-columns:1fr;} }
+
+/* 左侧面板 */
+.panel { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.panel h2 { font-size:14px; color:var(--muted); margin-bottom:14px; letter-spacing:1px; }
+.panel label { display:block; font-size:13px; margin:10px 0 4px; color:var(--muted); }
+.slider-row { display:flex; align-items:center; gap:8px; }
+.slider-row input[type=range] { flex:1; accent-color:var(--accent); }
+.slider-row .val { width:28px; text-align:right; font-weight:bold; color:var(--accent); }
+.btn { margin-top:18px; width:100%; padding:12px; background:linear-gradient(90deg,#0284c7,#7c3aed); color:#fff; border:none; border-radius:8px; font-size:15px; font-weight:bold; cursor:pointer; }
+.btn:hover { opacity:0.9; }
+.btn:disabled { opacity:0.4; cursor:not-allowed; }
+
+/* 右侧 */
+.main { display:flex; flex-direction:column; gap:20px; }
+.radar-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.radar-card h2 { font-size:14px; color:var(--muted); margin-bottom:8px; }
+.score-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:16px; }
+.score-box { background:#0b1526; border:1px solid var(--border); border-radius:10px; padding:12px; }
+.score-box .name { font-size:12px; color:var(--muted); }
+.score-box .num { font-size:26px; font-weight:bold; margin-top:4px; }
+.score-box .bar { height:5px; border-radius:3px; background:#334155; margin-top:8px; overflow:hidden; }
+.score-box .fill { height:100%; border-radius:3px; }
+.verdict { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+.verdict h2 { font-size:14px; color:var(--muted); margin-bottom:10px; }
+.verdict .big { font-size:28px; font-weight:bold; margin-bottom:8px; }
+.verdict .desc { color:var(--muted); line-height:1.7; font-size:14px; }
+.verdict ul { margin:10px 0 0 18px; color:var(--text); font-size:14px; line-height:1.9; }
+.tips { margin-top:14px; padding:12px; border-left:3px solid var(--accent); background:#0b1526; border-radius:0 8px 8px 0; font-size:13px; color:var(--muted); line-height:1.8; }
+.footer { text-align:center; color:#475569; font-size:12px; padding:16px; }
+.highlight { color:var(--green); font-weight:bold; }
+.warn { color:var(--yellow); font-weight:bold; }
+.danger { color:var(--red); font-weight:bold; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <h1>🏢 企业经营诊断大屏</h1>
+    <div class="sub">Company OS Diagnostic Dashboard · 基于《公司经营管理系统全景》8层体系 · 八维评分</div>
+  </div>
+  <div class="sub" id="meta">v1.0 · github.com/Focus688/company-operating-system</div>
+</div>
+
+<div class="container">
+  <!-- 左侧：输入 -->
+  <div class="panel">
+    <h2>📋 八维自评（0-10分）</h2>
+    <div id="sliders"></div>
+    <button class="btn" id="calcBtn">🔄 重新诊断</button>
+    <div class="tips">💡 参照 docs/15 经营诊断模板逐项打分。<br>0=完全没有 · 5=一般 · 10=优秀</div>
+  </div>
+
+  <!-- 右侧：结果 -->
+  <div class="main">
+    <div class="radar-card">
+      <h2>📊 八维雷达图</h2>
+      <canvas id="radar" width="800" height="420"></canvas>
+      <div class="score-grid" id="scores"></div>
+    </div>
+    <div class="verdict" id="verdict">
+      <h2>🔍 诊断结论</h2>
+      <div class="big" id="totalScore">--</div>
+      <div class="desc" id="desc">移动左侧滑块打分，点击「重新诊断」。</div>
+      <ul id="recs"></ul>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Company Operating System · 诊断框架开源：github.com/Focus688/company-operating-system</div>
+
+<script>
+// 八维定义（对应 docs 01-08 章）
+const DIMS = [
+  { key:'strategy', name:'① 战略', full:'战略方向（五看/聚焦/节奏）', chapter:'01' },
+  { key:'governance', name:'② 治理', full:'治理架构（股权/防火墙）', chapter:'02' },
+  { key:'valuechain', name:'③ 价值链', full:'横向价值链（研产供销服）', chapter:'03' },
+  { key:'org', name:'④ 组织', full:'纵向组织与协同（RACI）', chapter:'04' },
+  { key:'resources', name:'⑤ 底座', full:'资源底座（人财物数）', chapter:'05' },
+  { key:'moat', name:'⑥ 护城河', full:'护城河（品牌/技术/供应链）', chapter:'06' },
+  { key:'risk', name:'⑦ 风险', full:'风险合规（红线/预案）', chapter:'07' },
+  { key:'decision', name:'⑧ 决策', full:'决策引擎（可逆性/复盘）', chapter:'08' },
+];
+const WEIGHTS = [0.15, 0.10, 0.15, 0.10, 0.15, 0.15, 0.10, 0.10];
+
+// 生成滑块
+const slidersEl = document.getElementById('sliders');
+DIMS.forEach((d,i)=>{
+  const div = document.createElement('div');
+  div.innerHTML = `
+    <label>${d.name} · ${d.full}</label>
+    <div class="slider-row">
+      <input type="range" min="0" max="10" value="5" data-idx="${i}" id="s${i}">
+      <span class="val" id="v${i}">5</span>
+    </div>`;
+  slidersEl.appendChild(div);
+});
+
+// 雷达图绘制
+function drawRadar(values) {
+  const canvas = document.getElementById('radar');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.clearRect(0,0,W,H);
+  const cx = W/2 - 40, cy = H/2 + 10;
+  const R = Math.min(W,H)/2 - 60;
+  const N = DIMS.length;
+  const angle = (i) => -Math.PI/2 + i*2*Math.PI/N;
+
+  // 网格
+  for(let ring=1; ring<=5; ring++){
+    const r = R*ring/5;
+    ctx.beginPath();
+    for(let i=0;i<=N;i++){
+      const a = angle(i%N);
+      const x = cx + r*Math.cos(a), y = cy + r*Math.sin(a);
+      i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.stroke();
+  }
+  // 轴线+标签
+  ctx.font = '13px sans-serif'; ctx.fillStyle = '#94a3b8';
+  DIMS.forEach((d,i)=>{
+    const a = angle(i);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + R*Math.cos(a), cy + R*Math.sin(a));
+    ctx.strokeStyle = '#334155'; ctx.lineWidth = 1; ctx.stroke();
+    const lx = cx + (R+28)*Math.cos(a), ly = cy + (R+28)*Math.sin(a);
+    ctx.textAlign = Math.abs(Math.cos(a)) < 0.3 ? 'center' : (Math.cos(a) > 0 ? 'left' : 'right');
+    ctx.fillText(d.name, lx, ly+4);
+  });
+  // 数据
+  ctx.beginPath();
+  values.forEach((v,i)=>{
+    const a = angle(i);
+    const x = cx + R*v/10*Math.cos(a), y = cy + R*v/10*Math.sin(a);
+    i===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+  });
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(56,189,248,0.25)';
+  ctx.fill();
+  ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3; ctx.stroke();
+  // 点
+  values.forEach((v,i)=>{
+    const a = angle(i);
+    const x = cx + R*v/10*Math.cos(a), y = cy + R*v/10*Math.sin(a);
+    ctx.beginPath(); ctx.arc(x,y,4,0,2*Math.PI); ctx.fillStyle = '#38bdf8'; ctx.fill();
+  });
+}
+
+// 计算
+function calc() {
+  const values = DIMS.map((_,i)=>parseInt(document.getElementById('s'+i).value));
+  const weighted = values.reduce((s,v,i)=>s+v*WEIGHTS[i],0);
+  const pct = Math.round(weighted/10*100);
+  drawRadar(values);
+
+  // 分数卡
+  const grid = document.getElementById('scores');
+  grid.innerHTML = '';
+  values.forEach((v,i)=>{
+    const color = v>=7 ? 'var(--green)' : v>=4 ? 'var(--yellow)' : 'var(--red)';
+    grid.innerHTML += `<div class="score-box"><div class="name">${DIMS[i].name}</div><div class="num" style="color:${color}">${v}<span style="font-size:13px;color:#64748b">/10</span></div><div class="bar"><div class="fill" style="width:${v*10}%;background:${color}"></div></div></div>`;
+  });
+
+  // 结论
+  const totalEl = document.getElementById('totalScore');
+  const descEl = document.getElementById('desc');
+  const recsEl = document.getElementById('recs');
+  totalEl.textContent = pct + ' 分 / 100';
+
+  let level, cls, desc;
+  if(pct>=80){ level='🟢 健康'; cls='highlight'; desc='体系运转良好。保持节奏，重点在「第二曲线 + 护城河加宽」。'; }
+  else if(pct>=60){ level='🟡 亚健康'; cls='warn'; desc='有骨架但存在短板。优先补齐最弱 2 维，防止短板拖垮长板。'; }
+  else { level='🔴 危险'; cls='danger'; desc='仍处于「人治」状态或存在重大缺陷。先落地 docs/12 六步，别急着扩张。'; }
+  totalEl.innerHTML = `<span class="${cls}">${level}</span> · ${pct} / 100`;
+
+  // 弱项推荐
+  recsEl.innerHTML = '';
+  const weak = values.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v).slice(0,3);
+  const recText = {
+    strategy:['先做五看（docs/01）：宏观/行业/客户/竞争/自己','年度战略会要开实，砍一个不赚钱业务'],
+    governance:['检查股权控制权比例（67/51/34，docs/02）','跨境公司补防火墙与转移定价合规'],
+    valuechain:['先算分产品/分客户真实毛利（docs/03/05）','梳理订单履约流程，明确流程Owner'],
+    org:['画一张 RACI 主矩阵（docs/19）','关键岗位补 AB 角'],
+    resources:['上 ERP/经营驾驶舱，先让数据干净（docs/05）','现金流预测 3-6 个月（应收/库存/应付三账期）'],
+    moat:['问自己：对手拿到客户名单和图纸能干成吗？（docs/06）','每年加宽一条护城河'],
+    risk:['列红线清单（现金流/客户集中度/政策预案，docs/07）','危机预案每年演练一次'],
+    decision:['决策前先判断可逆性（单向门/双向门，docs/08）','每次大决策设复盘点'],
+  };
+  weak.forEach(({v,i})=>{
+    if(v<7){
+      const t = recText[DIMS[i].key] || [];
+      recsEl.innerHTML += `<li><b>${DIMS[i].name}（${v}/10）</b>：${t.join('；')}</li>`;
+    }
+  });
+  if(!recsEl.innerHTML) recsEl.innerHTML = '<li>无明显短板，进入 docs/09 生命周期与 docs/18 AI实践 的进阶话题。</li>';
+}
+
+// 滑块联动
+DIMS.forEach((_,i)=>{
+  document.getElementById('s'+i).addEventListener('input',(e)=>{
+    document.getElementById('v'+i).textContent = e.target.value;
+  });
+});
+document.getElementById('calcBtn').addEventListener('click', calc);
+calc();
+</script>
+</body>
+</html>
