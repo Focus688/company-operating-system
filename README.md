@@ -3,7 +3,11 @@
 > **把公司管理好 · 赚钱 · 基业长青**
 > The Complete Framework for Running a Company — Make Money, Last Forever.
 
-![stars](https://img.shields.io/badge/⭐-冲击高星-orange) ![license](https://img.shields.io/badge/license-MIT-blue) ![docs](https://img.shields.io/badge/docs-13%2B%20chapters-green)
+![stars](https://img.shields.io/badge/⭐-冲击高星-orange) ![license](https://img.shields.io/badge/license-MIT-blue) ![docs](https://img.shields.io/badge/docs-16%2B%20chapters-green) ![lang](https://img.shields.io/badge/lang-中文%20%7C%20EN-orange)
+
+**English version** 👉 [README.en.md](README.en.md)
+
+> **AI 引擎友好**：本仓库提供 [llms.txt](llms.txt)（GEO/Generative Engine Optimization），方便 ChatGPT、Perplexity、Kimi、豆包等 AI 引擎检索与引用。
 
 ---
 
@@ -87,6 +91,10 @@ GitHub 上有 Odoo（ERP）、Operately（公司OS）、Holacracy（治理宪法
 | [11-行业差异化管理](docs/11-行业差异化管理.md) | ⭐ 制造业/科技/金融/零售/餐饮/跨境/服务…分行业拆解 |
 | [12-落地清单-先做哪几件事](docs/12-落地清单-先做哪几件事.md) | 6步落地 + 每月经营诊断模板 |
 | [13-开源工具与参考资源](docs/13-开源工具与参考资源.md) | 调研：Company OS / 方法论 / ERP 开源项目盘点 |
+| [14-失败案例库-企业是怎么死的](docs/14-失败案例库-企业是怎么死的.md) | 💀 诺基亚/柯达/ofo/乐视/恒大/安然/瑞幸/三鹿/波音——失败模式→防御机制 |
+| [15-经营诊断模板-月度与年度](docs/15-经营诊断模板-月度与年度.md) | 📋 可下载的月度10分钟体检 + 年度战略会 + 160分评分卡 |
+| [16-推广发布指南](docs/16-推广发布指南.md) | 🚀 HN/Reddit/掘金/知乎 发布帖草稿与时机 |
+| [17-Operately实操评测](docs/17-Operately实操评测.md) | 🧪 开源公司OS真实部署评测（2026-08-12实测，含截图与踩坑记录） |
 
 ---
 
@@ -103,11 +111,14 @@ GitHub 上有 Odoo（ERP）、Operately（公司OS）、Holacracy（治理宪法
 ## Roadmap / 路线图
 
 - [x] v1.0 八层体系框架（2026-08-12）
-- [ ] v1.1 各行业深度案例库（制造业/跨境优先）
-- [ ] v1.2 决策方法论扩展（贝叶斯/OODA实战模板）
-- [ ] v1.3 经营诊断模板 + 飞书/Notion 版本
-- [ ] v1.4 失败案例库（企业是怎么死的）
-- [ ] v1.5 与开源工具（Operately/ERPNext）对接指南
+- [x] v1.1 各行业深度案例库（12行业：制造/科技/金融/零售/餐饮/跨境/服务/物流/医疗/教育/地产/农业）
+- [x] v1.2 失败案例库（企业是怎么死的：12个真实案例 + 失败模式→防御清单）
+- [x] v1.3 经营诊断模板（月度10分钟 + 年度战略会 + 160分评分卡）
+- [x] v1.4 GEO 优化（llms.txt + AI引擎友好，已上线）
+- [x] v1.5 推广发布指南（HN/Reddit/掘金/知乎 帖草稿）
+- [ ] v1.6 英文全量翻译
+- [ ] v1.7 Operately/ERPNext 部署评测文章
+- [ ] v1.8 飞书/Notion 多维表格版本
 
 ---
 
