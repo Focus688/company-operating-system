@@ -14,7 +14,7 @@
 
 Not ERP software. Not a collection of management slogans. A reusable framework you can adapt to your company — and use alongside your ERP, project tools, and knowledge base.
 
-> **Language note:** This English README is an overview. The source chapters are currently Chinese-first, with full English translation planned. PRs are welcome.
+> **Language note:** All 19 chapters are now translated into English (docs/en/). The Chinese-first originals remain in docs/.
 
 **中文版** 👉 [README.md](README.md)
 
@@ -42,35 +42,35 @@ Not ERP software. Not a collection of management slogans. A reusable framework y
 
 | # | Layer | Core Question | Doc |
 |:---:|:---|:---|:---|
-| ① | **Strategy**: direction → budget → KPIs → review | Where are we going, and how do we correct course? | [Strategy, Budget & Review](docs/01-牵引层-战略预算考核复盘.md) |
-| ② | **Governance**: equity, board, subsidiaries, firewalls | Who decides, and how do we ring-fence risk — especially across borders? | [Governance & Risk Firewalls](docs/02-治理层-股权架构与防火墙.md) |
-| ③ | **Value Chain**: sales → R&D → planning & material control (PMC) → production → quality → service | How is value created and delivered? | [Value Chain](docs/03-横向价值链-研产供销服.md) |
-| ④ | **Organization**: departments & cross-functional collaboration | How do we break department silos? | [Organization & Collaboration](docs/04-纵向组织-部门与协同.md) |
-| ⑤ | **Resources**: people / finance / materials / data | What powers the business? | [Resources: People, Finance, Materials & Data](docs/05-资源底座-人财物数.md) |
-| ⑥ | **Moat**: license, brand, channel, patents, supply chain, org | What makes our advantage difficult to copy? | [Moats & Core Value](docs/06-护城河-核心价值.md) |
-| ⑦ | **Risk & Compliance**: industry risk maps / internal control / audit / crisis | How do we remain resilient under operational and external shocks? | [Risk, Compliance & Crisis Management](docs/07-风险合规-审计内控危机.md) |
-| ⑧ | **Decision Engine**: CEO decision-making under uncertainty | How do we make good decisions with incomplete information? | [CEO Decision Engine](docs/08-决策引擎-CEO决策方法论.md) |
+| ① | **Strategy**: direction → budget → KPIs → review | Where are we going, and how do we correct course? | [Strategy, Budget & Review](docs/en/01-Strategy-Budget-Review.md) |
+| ② | **Governance**: equity, board, subsidiaries, firewalls | Who decides, and how do we ring-fence risk — especially across borders? | [Governance & Risk Firewalls](docs/en/02-Governance-Equity-Firewalls.md) |
+| ③ | **Value Chain**: sales → R&D → planning & material control (PMC) → production → quality → service | How is value created and delivered? | [Value Chain](docs/en/03-Value-Chain.md) |
+| ④ | **Organization**: departments & cross-functional collaboration | How do we break department silos? | [Organization & Collaboration](docs/en/04-Organization-Collaboration.md) |
+| ⑤ | **Resources**: people / finance / materials / data | What powers the business? | [Resources: People, Finance, Materials & Data](docs/en/05-Resource-Foundation.md) |
+| ⑥ | **Moat**: license, brand, channel, patents, supply chain, org | What makes our advantage difficult to copy? | [Moats & Core Value](docs/en/06-Moats.md) |
+| ⑦ | **Risk & Compliance**: industry risk maps / internal control / audit / crisis | How do we remain resilient under operational and external shocks? | [Risk, Compliance & Crisis Management](docs/en/07-Risk-Compliance-Crisis.md) |
+| ⑧ | **Decision Engine**: CEO decision-making under uncertainty | How do we make good decisions with incomplete information? | [CEO Decision Engine](docs/en/08-CEO-Decision-Engine.md) |
 
 ### 3 Cross-cutting Threads
 
 | Thread | Content | Doc |
 |:---|:---|:---|
-| 🕐 Time | Startup → Growth → Maturity → Transformation | [Company Lifecycle](docs/09-时间维度-企业生命周期.md) |
-| 🧊 People | Iceberg model (skills above, values below) | [People Iceberg Model](docs/10-人的匹配-冰山模型.md) |
-| 🏭 Industry | 12 industries: cost structure, key metrics, moats, risks | [Industry Playbooks](docs/11-行业差异化管理.md) |
+| 🕐 Time | Startup → Growth → Maturity → Transformation | [Company Lifecycle](docs/en/09-Lifecycle.md) |
+| 🧊 People | Iceberg model (skills above, values below) | [People Iceberg Model](docs/en/10-People-Iceberg.md) |
+| 🏭 Industry | 12 industries: cost structure, key metrics, moats, risks | [Industry Playbooks](docs/en/11-Industry-Playbooks.md) |
 
 ### Additional resources
 
 | Resource | What it contains |
 |:---|:---|
-| [Implementation Checklist](docs/12-落地清单-先做哪几件事.md) | 6-step implementation path and monthly diagnosis template |
-| [Open-Source Tools & References](docs/13-开源工具与参考资源.md) | Open-source company OS, ERP, and management methodology resources |
-| [Failure Case Library](docs/14-失败案例库-企业是怎么死的.md) | Failure patterns mapped to defensive controls |
-| [Management Diagnosis Templates](docs/15-经营诊断模板-月度与年度.md) | Monthly and annual operating reviews |
-| [Launch & Distribution Guide](docs/16-推广发布指南.md) | Practical guidance for sharing and extending the project |
-| [Operately Deployment Review](docs/17-Operately实操评测.md) | Hands-on Operately deployment review with screenshots, setup notes, and trade-offs |
-| [AI-Native Organization](docs/18-AI时代-原生组织实践.md) | AI-native organization: practices across all 8 layers, three operating models, a four-step adoption path, and AI governance |
-| [Matrix Coupling](docs/19-矩阵耦合-模块间咬合关系.md) | 7 matrices showing how the layers interact |
+| [Implementation Checklist](docs/en/12-Implementation-Checklist.md) | 6-step implementation path and monthly diagnosis template |
+| [Open-Source Tools & References](docs/en/13-Open-Source-Tools.md) | Open-source company OS, ERP, and management methodology resources |
+| [Failure Case Library](docs/en/14-Failure-Case-Library.md) | Failure patterns mapped to defensive controls |
+| [Management Diagnosis Templates](docs/en/15-Diagnosis-Templates.md) | Monthly and annual operating reviews |
+| [Launch & Distribution Guide](docs/en/16-Promotion-Guide.md) | Practical guidance for sharing and extending the project |
+| [Operately Deployment Review](docs/en/17-Operately-Review.md) | Hands-on Operately deployment review with screenshots, setup notes, and trade-offs |
+| [AI-Native Organization](docs/en/18-AI-Native-Organization.md) | AI-native organization: practices across all 8 layers, three operating models, a four-step adoption path, and AI governance |
+| [Matrix Coupling](docs/en/19-Matrix-Coupling.md) | 7 matrices showing how the layers interact |
 | [Diagnosis Dashboard](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) | Interactive eight-dimension assessment tool — **try it live**: [open](https://focus688.github.io/company-operating-system/diagnostic-dashboard.html) |
 
 ---
@@ -93,10 +93,10 @@ Not ERP software. Not a collection of management slogans. A reusable framework y
 
 | You are... | Start here |
 |:---|:---|
-| A founder or CEO making high-stakes decisions | [CEO Decision Engine](docs/08-决策引擎-CEO决策方法论.md) → [Implementation Checklist](docs/12-落地清单-先做哪几件事.md) |
-| Building a management system | [Strategy, Budget & Review](docs/01-牵引层-战略预算考核复盘.md), then work through the 8 layers |
-| Writing a company handbook | [Open-Source Tools & References](docs/13-开源工具与参考资源.md) |
-| Diagnosing an existing business | [Management Diagnosis Templates](docs/15-经营诊断模板-月度与年度.md) → [Diagnosis Dashboard](diagnostic-dashboard.html) |
+| A founder or CEO making high-stakes decisions | [CEO Decision Engine](docs/en/08-CEO-Decision-Engine.md) → [Implementation Checklist](docs/en/12-Implementation-Checklist.md) |
+| Building a management system | [Strategy, Budget & Review](docs/en/01-Strategy-Budget-Review.md), then work through the 8 layers |
+| Writing a company handbook | [Open-Source Tools & References](docs/en/13-Open-Source-Tools.md) |
+| Diagnosing an existing business | [Management Diagnosis Templates](docs/en/15-Diagnosis-Templates.md) → [Diagnosis Dashboard](diagnostic-dashboard.html) |
 
 ### The 6-step implementation path
 
@@ -134,7 +134,7 @@ Yes. Start with the decision engine, true gross-margin analysis, approval rules,
 Not yet. This README provides an English overview; the source chapters are currently Chinese-first. English translation contributions are welcome.
 
 **Where should I start?**
-Use the [6-step implementation path](docs/12-落地清单-先做哪几件事.md), or begin with the [CEO Decision Engine](docs/08-决策引擎-CEO决策方法论.md).
+Use the [6-step implementation path](docs/en/12-Implementation-Checklist.md), or begin with the [CEO Decision Engine](docs/en/08-CEO-Decision-Engine.md).
 
 ---
 
