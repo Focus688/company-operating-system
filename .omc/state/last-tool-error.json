@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"git diff 62f1bb9^ 62f1bb9 -- docs/01-牵引层-战略预算考核复盘.md\",\"description\":\"查看章节首次提交内容\"}",
-  "error": "Exit code 128\nfatal: bad revision '62f1bb9^'",
-  "timestamp": "2026-08-12T10:56:21.676Z",
-  "retry_count": 1
-}
