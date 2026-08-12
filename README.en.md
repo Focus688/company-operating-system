@@ -67,6 +67,7 @@ Every module ships with **real cases, tools, and checklists**. No fluff, no mana
 | [14-失败案例库](docs/14-失败案例库-企业是怎么死的.md) | Failure cases: how companies die (most educational) |
 | [15-经营诊断模板](docs/15-经营诊断模板-月度与年度.md) | Downloadable monthly / annual diagnosis templates |
 | [17-Operately实操评测](docs/17-Operately实操评测.md) | Real deployment review of Operately (tested 2026-08-12, with screenshots) |
+| [18-AI时代-原生组织实践](docs/18-AI时代-原生组织实践.md) | AI-Native Organization: AI practice map for all 8 layers + 3 forms + 4-step adoption + AI governance |
 
 ---
 
