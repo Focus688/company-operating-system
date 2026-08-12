@@ -7,10 +7,10 @@
 [![GitHub forks](https://img.shields.io/github/forks/Focus688/company-operating-system?style=social)](https://github.com/Focus688/company-operating-system/network/members)
 [![License](https://img.shields.io/github/license/Focus688/company-operating-system)](LICENSE)
 [![Last commit](https://img.shields.io/github/last-commit/Focus688/company-operating-system)](https://github.com/Focus688/company-operating-system/commits/main)
-[![Chapters](https://img.shields.io/badge/chapters-19%2B-blue)](#what-you-get)
+[![Chapters](https://img.shields.io/badge/chapters-19-blue)](#what-you-get)
 [![Industries](https://img.shields.io/badge/industries-12-orange)](#what-you-get)
 
-**18+ chapters · 12 industry playbooks · practical checklists and templates · MIT licensed · AI-native organization chapter**
+**19 chapters · 12 industry playbooks · practical checklists and templates · MIT licensed · AI-native organization chapter**
 
 Not ERP software. Not a collection of management slogans. A reusable framework you can adapt to your company — and use alongside your ERP, project tools, and knowledge base.
 
